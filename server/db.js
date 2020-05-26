@@ -18,5 +18,5 @@ mongoose.connect(url, options).then(function () {
   console.log('MongoDB is connected');
 })
   .catch(function (err) {
-    console.log(err);
+    console.log('Could not connect to MongoDB...', err);
   });
