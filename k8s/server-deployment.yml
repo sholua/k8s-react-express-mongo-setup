@@ -12,6 +12,12 @@ spec:
       labels:
         component: server 
     spec:
+      restartPolicy: Always
+      initContainers:
+        - name: wait-for-init-db
+          image: busybox
+          command: ['sh', '-c', 'until nc -z
+          mongo-cluster-ip-service:27017; do echo waiting for db; sleep 2; done;']
       containers: 
         - name: server 
           image: shol/server 
